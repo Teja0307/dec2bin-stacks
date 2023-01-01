@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+#define MAX 100
+int stack_arr[MAX];
+int top=-1;
+
+void push(int data){
+    if(top==MAX-1)
+    {
+        cout<<"stack overflow";
+        exit(1);
+    }
+    top++;
+    stack_arr[top]=data;
+}
+
+int pop()
+{
+    int val;
+    if(top==-1)
+    {
+        cout<<"stack underflow";
+        exit(1);
+    }
+    val=stack_arr[top];
+    top--;
+    return val;
+}
+
+
+
+void dec2bin(int n){
+    while(n!=0)
+    {
+        push(n%2);
+        n=n/2;
+    }
+}
+
+void print(){
+    if(top==-1)
+    {
+        cout<<"stack underflow";
+        exit(1);
+    }
+    while(top!=-1)
+    {
+        cout<<pop();
+    }
+}
+
+int main()
+{
+    int dec;
+    cin>>dec;
+    dec2bin(dec);
+    print();
+}
